@@ -1,0 +1,881 @@
+//Q.1Create a C# application by using (required Controls of your own choice) a program that can be used to determine the total amount a family needs to pay for bus tickets.
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string[] names = new string[10];
+            int[] ages = new int[10];
+            string item1;
+            string item2;
+            //double[] ticket = new double[10];
+            double sum=0;
+            int num = Convert.ToInt32(textBox1.Text);
+            for (int i = 0; i < num; i++) 
+            {
+                item1 = Microsoft.VisualBasic.Interaction.InputBox("Enter Name : ");
+                names[i] = item1;
+                listBox1.Items.Add(item1);
+                item2 = Microsoft.VisualBasic.Interaction.InputBox("Enter their age : ");
+                ages[i] = Convert.ToInt32(item2);
+                listBox2.Items.Add(item2);
+                if (ages[i]<=5)
+                {
+                    sum = sum + 50;
+                }
+                else if (ages[i]>5 && ages[i]<=12)
+                {
+                    sum = sum + 100;
+                }
+                else
+                {
+                    sum = sum + 300;
+                }
+                textBox2.Text=Convert.ToString(sum);
+            }
+                   
+            }
+//Q.2 Create an application in C# than can generate shopping street effect dynamically at run time by using Labels , buttons ,Text Boxes or Picture Box and Timer Control. with appropriate
+//Shop captions like(Clothing store , Shoe Store , Grocery shop stc).
+
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\shopping\mall.jpeg");
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            Label l1 = new Label();
+            l1.ForeColor = Color.Chocolate;
+            l1.BackColor = Color.Transparent;
+            l1.Text = "Welcome to Crimson Shopping Dome";
+            l1.Font = new Font("Microsoft YaHei UI", 28);
+            l1.Location = new Point(28, 0);
+            l1.Size = new Size(724, 50);
+            this.Controls.Add(l1);
+
+            /*PictureBox p1 = new PictureBox();
+            this.Controls.Add(p1);
+            //p1.BringToFront();
+            p1.Size = new Size(163, 173);
+            p1.Location = new Point(1, 165);
+            p1.SizeMode = PictureBoxSizeMode.StretchImage;
+            p1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\shopping\boutique.jpg");*/
+
+            Label b1 = new Label(); 
+            b1.BackColor = Color.Blue;
+            b1.ForeColor = Color.Chocolate;
+            b1.Size = new Size(316, 25);
+            b1.Location = new Point(76, 200);
+            b1.Font = new Font("Microsoft YaHei UI", 14);
+            b1.Text = "Press to explore Crimson's stores";
+            this.Controls.Add(b1);
+            comboBox1.Visible = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+            pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\shopping\person-walking.png");
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.BackColor = Color.Transparent;
+            int width = this.Width; // get the width of Form.
+
+            if (pictureBox1.Location.X > width - pictureBox1.Width) //to check condition if pic box is touch the boundroy of form width
+            {
+                pictureBox1.Location = new Point(1, pictureBox1.Location.Y); // pic box is set to the new point. here 1 is indicate of X coordinate.
+            }
+            else
+            {
+                pictureBox1.Location = new Point(pictureBox1.Location.X - 10, pictureBox1.Location.Y); // to move picture box from x coordinate by 100 Point.
+            }
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem == "Cloth Shop")
+            {
+                cloth c = new cloth();
+                c.Show();
+            }
+            else if (comboBox1.SelectedItem == "Shoe Shop")
+            {
+                shoe s = new shoe();
+                s.Show();
+            }
+            else if (comboBox1.SelectedItem == "Grocery Shop")
+            {
+                grocery g = new grocery();
+                g.Show();
+            }
+            else
+            {
+                cafe c = new cafe();
+                c.Show();
+            }
+        }
+
+    }
+}*/
+
+//Q.3 Create an application in C# that can generate scientific Calculator including all the  necessary functions.
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Scientific_Cal : Form
+    {
+        public Scientific_Cal()
+        {
+            InitializeComponent();
+        }
+        double result ;
+        double first_dg;
+        string Operator;
+        bool isOperator;
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Tanh(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text=="0" || isOperator)
+            {
+                textBox1.Clear();
+                isOperator = false;
+            }
+            Button button = (Button)sender;
+            if (textBox1.Text==".")
+            {
+                if(!textBox1.Text.Contains("."))
+                {
+                    textBox1.Text += button.Text;       // generic formula for all the numbers
+                }
+                
+            }
+            else
+            {
+                textBox1.Text += button.Text;
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            int index = textBox1.Text.Length;   // index variable contains number of digits which have their index starting from 0
+            index--;    // this makes index 1 unit small
+            textBox1.Text = textBox1.Text.Remove(index);    // this command removes the last digitobtained from index-- bc index starts from 0
+            if (textBox1.Text=="")
+            {
+                textBox1.Text = "0";
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "0";
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = result * -1;
+            textBox1.Text = result.ToString();
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            first_dg = double.Parse(textBox1.Text);
+            Button oper = (Button)sender;
+            Operator = oper.Text;
+            isOperator = true;
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            switch (Operator)
+            { 
+                case "+":
+                    textBox1.Text = (first_dg + double.Parse(textBox1.Text)).ToString();
+                    break;
+                case "-":
+                    textBox1.Text = (first_dg - double.Parse(textBox1.Text)).ToString();
+                    break;
+                case "*":
+                    textBox1.Text = (first_dg * double.Parse(textBox1.Text)).ToString();
+                    break;
+                case "/":
+                    textBox1.Text = (first_dg / double.Parse(textBox1.Text)).ToString();
+                    break;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Log10(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Sqrt(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Sinh(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Cosh(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Exp(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Sin(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Cos(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Tan(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            result = Math.PI;
+            
+            textBox1.Text = result.ToString();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = result*result;
+            textBox1.Text = result.ToString();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = result * result*result;
+            textBox1.Text = result.ToString();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = 1/result ;
+            textBox1.Text = result.ToString();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = (first_dg % double.Parse(textBox1.Text));
+            textBox1.Text = result.ToString();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Log(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = result/100;
+            textBox1.Text = result.ToString();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Ceiling(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            result = double.Parse(textBox1.Text);
+            result = Math.Floor(result);
+            textBox1.Text = result.ToString();
+        }
+
+        private void Scientific_Cal_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}*/
+
+//Q.4. Create an application in C sharp that will place different objects at random locations over the form and they are moving with random speed and would be killed by some other object.
+//Application must be able to count the score that has been produced by the player.
+
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Form4 : Form
+    {
+        public Form4()
+        {
+            InitializeComponent();
+            label2.Hide();
+        }
+
+        bool right, left, space;
+
+        // creating function to access bool value to move player left and right
+        void Arrow_key_Movement()
+        {
+            if (right==true)
+            {
+                if (player.Left<425)    //if right bool is true then move player to right
+                {
+                    player.Left += 20;  // increasing leftb means the pic is moving towards right
+                }
+            }
+            if (left==true)
+            {
+                if (player.Left>10)
+                {
+                    player.Left -= 20;  // if left bool value id=s true then move player to left
+                }
+            }
+        }
+
+        // creating a method for enemy movement
+        void Enemy_Movement()
+        {
+            Random r = new Random();
+            int x, y;
+            if (pictureBox1.Top>=500)
+            {
+                x = r.Next(0, 300);
+                pictureBox1.Location = new Point(x, 0);
+            }
+            if (pictureBox2.Top>=500)
+            {
+                y = r.Next(0, 300);
+                pictureBox2.Location = new Point(y,0);
+            }
+            else
+            {
+                pictureBox1.Top += 15;  //otherwise move enemies fromtop to bottom
+                pictureBox2.Top += 10;
+            }
+        }
+
+        void Add_fire()
+        {
+            PictureBox drag = new PictureBox();
+            drag.SizeMode = PictureBoxSizeMode.StretchImage;
+            drag.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\shooting\fire.gif");
+            drag.BackColor = System.Drawing.Color.Transparent;
+            drag.Left = player.Left + 15;
+            drag.Top = player.Top - 50;
+            drag.Tag = "fire";
+            this.Controls.Add(drag);
+            drag.BringToFront();
+        }
+
+        // in this method first we will tag fire from Add_Fire function and then move fire from top to bottom
+        void Fire_Movement()
+        {
+            foreach(Control x in this.Controls)
+            {
+                if (x is PictureBox && x.Tag=="fire")
+                {
+                    x.Top -= 10;
+                    if (x.Top<100)
+                    {
+                        this.Controls.Remove(x);
+                    }
+                }
+            }
+        }
+
+        // function for star movement
+        void Star_Movement()
+        {
+            foreach(Control j in this.Controls)
+            {
+                if (j is PictureBox && j.Tag == "stars")
+                {
+                    j.Top += 10;
+                    if (j.Top>400)      //this method is to move stars top and bottom
+                    {
+                        j.Top = 0;
+                    }
+                }
+            }
+        }
+
+        int score = 0;
+        void Score()
+        {
+            foreach(Control j in this.Controls)
+            {
+                foreach (Control i in this.Controls)
+                {
+                    if (j is PictureBox && j.Tag=="fire")
+                    {
+                        if (i is PictureBox && i.Tag=="enemy")
+                        {
+                                if (j.Bounds.IntersectsWith(i.Bounds))      //if bullet hits any of the enemy then send that enemy to the form top-100 to look like enemy has disappeared
+                                {
+                                    i.Top =- 100;
+                                    ((PictureBox)j).Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\shooting\explosion.gif");
+                                    score++;
+                                    label1.Text = "Score : " + score;
+                                }
+                        }
+                    }
+                }
+            }
+
+            if (player.Bounds.IntersectsWith(pictureBox1.Bounds) || player.Bounds.IntersectsWith(pictureBox2.Bounds))
+            {
+                timer1.Stop();
+                label2.Show();
+                label2.BringToFront();
+            }
+        }
+
+        
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // calling the arrow_key_movement to execute the event
+            Arrow_key_Movement();
+            Enemy_Movement();
+            Fire_Movement();
+            Star_Movement();
+            Score();
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //bool space;
+        private void Form4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Right)
+            { 
+                right = true; 
+
+            }
+            if (e.KeyCode==Keys.Left)
+            {
+                left = true;
+            }
+            if (e.KeyCode==Keys.Space)
+            {
+                space = true;
+                Add_fire();
+            }
+        }
+
+        private void Form4_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Right)
+            {
+                right = false;
+
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                left = false;
+            }
+            if (e.KeyCode == Keys.Space)
+            {
+                space = false;
+            }
+        }
+    }
+}*/
+
+//Create a C sharp application with name “Pakistan Tour “in forms text property Application should be based on multi forms
+// Main Form
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Form5 : Form
+    {
+        public Form5()
+        {
+            InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            KPK f1 = new KPK();
+            f1.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Balochistan f1 = new Balochistan();
+            f1.Show();
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Sindh f1 = new Sindh();
+            f1.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Punjab f1 = new Punjab();
+            f1.Show();
+        }
+    }
+}*/
+
+//Balochistan Form
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Balochistan : Form
+    {
+        public Balochistan()
+        {
+            InitializeComponent();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem=="Quetta")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Karahi");
+                listBox1.Items.Add("Sajji");
+                listBox2.Items.Add("Balochi and Brahui language");
+                listBox2.Items.Add("dance");
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\quetta.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+
+
+            }
+            else if (comboBox1.SelectedItem=="Turbat")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Kata kat");
+                listBox1.Items.Add("Khaddi Kabab");
+                listBox2.Items.Add("Folk Music");
+                listBox2.Items.Add("Handicraft");
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\turbat.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else if (comboBox1.SelectedItem=="Khuzdar")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Abgoosht");
+                listBox1.Items.Add("Landhi");
+                listBox2.Items.Add("Balochi and Brahui language");
+                listBox2.Items.Add("Drama");
+                listBox2.Items.Add("Balochi Cinema");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\khuzdar.jpg");
+            }
+            else
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Pirki");
+                listBox1.Items.Add("Fish");
+                listBox2.Items.Add("Balochi and Brahui language");
+                listBox2.Items.Add("Dance");
+                listBox2.Items.Add("Craft");
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\gwadar famous places1.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+        }
+
+        private void Balochistan_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}*/
+
+//KPK Form
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class KPK : Form
+    {
+        public KPK()
+        {
+            InitializeComponent();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem=="Peshawar")
+            {
+                listBox1.Items.Clear();
+                listBox1.Items.Clear();
+                listBox1.Items.Add("Chapli Kabab");
+                listBox1.Items.Add("Peshawari Karahi");       
+                listBox2.Items.Add("Gham khadi : Festival");
+                listBox2.Items.Add("Wada Koidana : Festival");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\PeshawarCollage.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else if (comboBox1.SelectedItem=="Mardan")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Chopan Kabab");
+                listBox1.Items.Add("Kabuli Pulao");
+                listBox2.Items.Add("Topak tamacha : Poetry");
+                listBox2.Items.Add("Khattak dance");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\mardan.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+
+            }
+            else if (comboBox1.SelectedItem== "Abbottabad")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Mantu");
+                listBox1.Items.Add("Bolani");
+                listBox2.Items.Add("Nava roz : Festival");
+                listBox2.Items.Add("Tappa : Poetry");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\abbottabad.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Londei");
+                listBox1.Items.Add("Dum Pukht");
+                listBox2.Items.Add("Badala : Folk Music");
+                listBox2.Items.Add("Charbeta : Poetry");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\kohat.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}*/
+
+//Sindh Form
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Sindh : Form
+    {
+        public Sindh()
+        {
+            InitializeComponent();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem=="Karachi")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Biryani");
+                listBox1.Items.Add("Chicken Tikka");
+                listBox2.Items.Add("Urdu, Sindhi, Sanskrit");
+                listBox2.Items.Add("14th August");
+                listBox2.Items.Add("Eid-ul-Adha and Eid-ul-Fitr");
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\karachi.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else if (comboBox1.SelectedItem=="Hyderabad")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Nihari");
+                listBox1.Items.Add("Handi");
+                listBox2.Items.Add("Urdu, Sindhi, Sanskrit");
+                listBox2.Items.Add("Sindhi folk songs and music.");
+                listBox2.Items.Add("Tambura");
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\hyder.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else if (comboBox1.SelectedItem=="Sukkur")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Dal pakwan");
+                listBox1.Items.Add("Koki");
+                listBox2.Items.Add("Urdu, Sindhi, Sanskrit");
+                listBox2.Items.Add("Agricultural lifestyle");
+                listBox2.Items.Add("Sufis, mystics and martyrs");
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\sukkur.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("Juar jo Bathu");
+                listBox1.Items.Add("Sai Bhaji");
+                listBox2.Items.Add("Urdu, Sindhi, Sanskrit");
+                listBox2.Items.Add("Folk dance of Bhagat");
+                listBox2.Items.Add("Itinerant way of lifestyle");
+                pictureBox1.Image = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\thatta.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+        }
+
+        private void Sindh_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}*/
+
+// Punjab Form
+/*using System.Windows.Forms;
+
+namespace Assignment
+{
+    public partial class Punjab : Form
+    {
+        public Punjab()
+        {
+            InitializeComponent();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem=="Lahore")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("sarson da saag");
+                listBox1.Items.Add("Amritsari Lassi");
+                listBox2.Items.Add("phulkari(embroidery)");
+                listBox2.Items.Add("Pagri(turban), lacha, kurta, khusa");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\Lahore_collage.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else if (comboBox1.SelectedItem=="Multan")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("tandoori chicken");
+                listBox1.Items.Add("Makhni doodh");
+                listBox2.Items.Add("Punjabi, Pothowari, Hindko");
+                listBox2.Items.Add("gharara");
+                listBox2.Items.Add("Bhangra");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\multan.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else if (comboBox1.SelectedItem=="Faisalabad")
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("shami kebab");
+                listBox1.Items.Add("Jalebi");
+                listBox2.Items.Add("Punjabi, Pothowari, Hindko");
+                listBox2.Items.Add("kabaddi and wrestling");
+                listBox2.Items.Add("Gilli-Danda");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\faisalabad.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.Items.Add("makki di roti");
+                listBox1.Items.Add("Halva");
+                listBox2.Items.Add("Punjabi, Pothowari, Hindko");
+                listBox2.Items.Add("Melas and Nomaish");
+                listBox2.Items.Add("Basant festival");
+                pictureBox1.BackgroundImage = Image.FromFile(@"C:\Users\Wasim Yasin\Pictures\paktour\bahawalpur.jpg");
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+        }
+
+        private void Punjab_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}*/
